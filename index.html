@@ -477,11 +477,20 @@
     }
 
     /* ── RESPONSIVE ── */
+    @media(max-width: 900px) {
+      .nav-branding { flex-direction: column; gap: .2rem; align-items: flex-start; }
+      .nav-tagline { font-size: .65rem; line-height: 1.3; max-width: calc(100vw - 120px); }
+      .nav-links-main { display: none; }
+      .mobile-only { display: block; }
+    }
+    @media(min-width: 901px) {
+      .mobile-only { display: none; }
+    }
+
     @media(max-width: 700px) {
-      .nav-links { display: none; }
       .mentions-box { padding: 1.5rem 1.2rem; }
       .form-row { grid-template-columns: 1fr; }
-      .hero { min-height: auto; padding-top: 6rem; padding-bottom: 4rem; }
+      .hero { min-height: auto; padding-top: 7.5rem; padding-bottom: 4rem; }
       .hero-parents { gap: 1.2rem; }
       .cd-box { min-width: 62px; padding: .7rem .9rem; }
       .hero-parent-img { width: 110px; height: 110px; }
@@ -593,6 +602,11 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </div>
         <ul class="nav-links">
+          <li class="mobile-only"><a href="#parents">Les parents</a></li>
+          <li class="mobile-only"><a href="#chiots">Les chiots</a></li>
+          <li class="mobile-only"><a href="#soins">Suivi santé</a></li>
+          <li class="mobile-only"><a href="#boxer">Le Boxer</a></li>
+          <li class="mobile-only"><a href="#contact">Contact</a></li>
           <li><a href="#mentions">Mentions légales</a></li>
         </ul>
       </div>
