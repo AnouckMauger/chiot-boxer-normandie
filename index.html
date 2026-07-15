@@ -1189,15 +1189,27 @@
         btn.textContent = 'Envoi en cours…';
         btn.disabled = true;
         try {
-          const resp = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+          const resp = await fetch(form.action, { 
+            method: 'POST', 
+            headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
           if (resp.ok) {
             document.getElementById('form-success').style.display = 'block';
+            document.getElementById('form-error').style.display = 'none';
             form.reset();
           } else {
             document.getElementById('form-error').style.display = 'block';
+            document.getElementById('form-success').style.display = 'none';
           }
         } catch {
           document.getElementById('form-error').style.display = 'block';
+          document.getElementById('form-success').style.display = 'none';
         }
         btn.textContent = 'Envoyer ma demande';
         btn.disabled = false;
